@@ -16,12 +16,11 @@ jobs:
     steps:
       - checkout: self
       - task: PowerShell@2
-        displayName: 'echo variables'
+        displayName: "Do the thing"
         inputs:
           targetType: 'inline'
-          script: |
-            echo app connection $(APP_CONFIG_CONNECTION) 
-            echo app service name $(APP_SERVICE_NAME)
+          script: 
+            write-host appconfig $(APP_CONFIG_CONNECTION) $(APP_SERVICE_NAME)
       - task: PowerShell@2
         displayName: Get Build Number
         inputs:
