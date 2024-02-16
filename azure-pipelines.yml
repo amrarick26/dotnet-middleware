@@ -8,6 +8,8 @@ variables:
     value: ./Customer.OrderCloud.sln
   - name: API_PROJECT_NAME
     value: Customer.OrderCloud.Api.csproj
+  - name: APP_CONFIG_CONNECTION
+  - name: APP_SERVICE_NAME
 jobs:
   - job: Build_MiddleWare
     pool:
