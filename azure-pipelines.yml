@@ -8,10 +8,6 @@ variables:
     value: ./Customer.OrderCloud.sln
   - name: API_PROJECT_NAME
     value: Customer.OrderCloud.Api.csproj
-  - name: APP_CONFIG_CONNECTION
-    value: ''
-  - name: APP_SERVICE_NAME
-    value: ''
 jobs:
   - job: Build_MiddleWare
     pool:
@@ -24,8 +20,8 @@ jobs:
         inputs:
           targetType: 'inline'
           script: |
-            echo app connection ${{ APP_CONFIG_CONNECTION }} 
-            echo app service name ${{ APP_SERVICE_NAME }}
+            echo app connection $(APP_CONFIG_CONNECTION) 
+            echo app service name $(APP_SERVICE_NAME)
       - task: PowerShell@2
         displayName: Get Build Number
         inputs:
