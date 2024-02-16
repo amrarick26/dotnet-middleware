@@ -45,7 +45,7 @@ jobs:
         displayName: Build solution $(SOLUTION_FILE_PATH)
         inputs:
           solution: $(SOLUTION_FILE_PATH)
-          script: |
+          script: >-
             SET APP_CONFIG_CONNECTION=$(AppConfigConnection)
       - task: VSTest@2
         displayName: Run C# Unit tests
