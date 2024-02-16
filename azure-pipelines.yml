@@ -20,7 +20,7 @@ jobs:
         inputs:
           targetType: 'inline'
           script: 
-            write-host appconfig $(APP_CONFIG_CONNECTION) $(APP_SERVICE_NAME)
+            write-host appconfig "$(APP_CONFIG_CONNECTION)" "$(APP_SERVICE_NAME)"
       - task: PowerShell@2
         displayName: Get Build Number
         inputs:
