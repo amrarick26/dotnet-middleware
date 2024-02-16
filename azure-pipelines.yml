@@ -55,6 +55,8 @@ jobs:
         inputs:
           projects: "**/$(API_PROJECT_NAME)"
           arguments: --configuration Release
+          script: |
+            SET APP_CONFIG_CONNECTION=$(APP_CONFIG_CONNECTION)
       - task: DotNetCoreCLI@2
         displayName: Publish Middleware
         inputs:
