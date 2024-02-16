@@ -45,6 +45,8 @@ jobs:
         displayName: Build solution $(SOLUTION_FILE_PATH)
         inputs:
           solution: $(SOLUTION_FILE_PATH)
+        script: |
+            SET APP_CONFIG_CONNECTION=$(AppConfigConnection)
       - task: VSTest@2
         displayName: Run C# Unit tests
         inputs:
@@ -56,8 +58,6 @@ jobs:
         inputs:
           projects: "**/$(API_PROJECT_NAME)"
           arguments: --configuration Release
-        script: |
-            SET APP_CONFIG_CONNECTION=$(AppConfigConnection)
       - task: DotNetCoreCLI@2
         displayName: Publish Middleware
         inputs:
