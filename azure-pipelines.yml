@@ -3,13 +3,6 @@ resources:
     - repository: self
       type: git
       ref: dev
-parameters:
-- name: AppServiceName
-  type: string
-  default: ''
-- name: AppConfigConnection
-  type: string
-  default: ''
 variables: 
   - name: SOLUTION_FILE_PATH
     value: ./Customer.OrderCloud.sln
@@ -22,6 +15,10 @@ jobs:
     displayName: Build Middleware
     steps:
       - checkout: self
+      - script: |
+          echo ${{ APP_CONFIG_CONNECTION }} 
+          echo ${{APP_SERVICE_NAME}}
+        displayName: 'echo parameter value'
       - task: PowerShell@2
         displayName: Get Build Number
         inputs:
@@ -30,7 +27,7 @@ jobs:
             try {
                 # call out to hosted endpoint to get the current version and add one for this build
                 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-                $response = Invoke-RestMethod -Uri "https://$(AppServiceName).azurewebsites.net/api/env"
+                $response = Invoke-RestMethod -Uri "https://$(APP_SERVICE_NAME).azurewebsites.net/api/env"
                 $newversion = [int]$response.BuildNumber.Split(".")[2] + 1
             Write-Host "##vso[build.updatebuildnumber]1.0.$newversion.$(Build.BuildId)"
             } catch {
