@@ -15,10 +15,13 @@ jobs:
     displayName: Build Middleware
     steps:
       - checkout: self
-      - script: |
-          echo ${{ APP_CONFIG_CONNECTION }} 
-          echo ${{APP_SERVICE_NAME}}
-        displayName: 'echo parameter value'
+      - task: PowerShell@2
+        displayName: 'echo variables'
+        inputs:
+          targetType: 'inline'
+          script: |
+            echo ${{ APP_CONFIG_CONNECTION }} 
+            echo ${{ APP_SERVICE_NAME }}
       - task: PowerShell@2
         displayName: Get Build Number
         inputs:
@@ -42,8 +45,6 @@ jobs:
         displayName: Build solution $(SOLUTION_FILE_PATH)
         inputs:
           solution: $(SOLUTION_FILE_PATH)
-        script: |
-            SET APP_CONFIG_CONNECTION=$(AppConfigConnection)
       - task: VSTest@2
         displayName: Run C# Unit tests
         inputs:
