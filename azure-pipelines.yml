@@ -8,8 +8,7 @@ variables:
     value: ./Customer.OrderCloud.sln
   - name: API_PROJECT_NAME
     value: Customer.OrderCloud.Api.csproj
-env:
-  APP_CONFIG_CONNECTION: APP_CONFIG_CONNECTION
+
 jobs:
   - job: Build_MiddleWare
     pool:
@@ -56,6 +55,8 @@ jobs:
             !**\obj\**
       - task: DotNetCoreCLI@2
         displayName: Build Middleware
+        env:
+          APP_CONFIG_CONNECTION: APP_CONFIG_CONNECTION
         inputs:
           projects: "**/$(API_PROJECT_NAME)"
           arguments: --configuration Release
