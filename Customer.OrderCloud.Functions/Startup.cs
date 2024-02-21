@@ -17,7 +17,7 @@ namespace Catalyst.Functions
         // This method gets called by the runtime. Use this method to add services to the container.
         public override void Configure(IFunctionsHostBuilder builder)
         {
-            var azureConnectionString = Environment.GetEnvironmentVariable("APP_CONFIG_CONNECTION");
+            var azureConnectionString = Environment.GetEnvironmentVariable("appConfigConnectionString");
             var settings = BuildSettings(azureConnectionString);
 
             var orderCloudClient = new OrderCloudClient(new OrderCloudClientConfig

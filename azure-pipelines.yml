@@ -17,12 +17,6 @@ jobs:
     steps:
       - checkout: self
       - task: PowerShell@2
-        displayName: "Do the thing"
-        inputs:
-          targetType: 'inline'
-          script: 
-            write-host appconfig "$(APP_CONFIG_CONNECTION)" "$(APP_SERVICE_NAME)"
-      - task: PowerShell@2
         displayName: Get Build Number
         inputs:
           targetType: inline
@@ -45,8 +39,6 @@ jobs:
         displayName: Build solution $(SOLUTION_FILE_PATH)
         inputs:
           solution: $(SOLUTION_FILE_PATH)
-          script: |
-            SET APP_CONFIG_CONNECTION=$(APP_CONFIG_CONNECTION)
       - task: VSTest@2
         displayName: Run C# Unit tests
         inputs:
@@ -55,8 +47,6 @@ jobs:
             !**\obj\**
       - task: DotNetCoreCLI@2
         displayName: Build Middleware
-        env:
-          APP_CONFIG_CONNECTION: APP_CONFIG_CONNECTION
         inputs:
           projects: "**/$(API_PROJECT_NAME)"
           arguments: --configuration Release

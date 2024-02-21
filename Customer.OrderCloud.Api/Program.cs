@@ -16,7 +16,7 @@ namespace Customer.OrderCloud.Api
 		{
 			// Links to an Azure App Configuration resource that holds the app settings.
 			// For local development, set this in your visual studio Env Variables.
-			var connectionString = Environment.GetEnvironmentVariable("APP_CONFIG_CONNECTION");
+			var connectionString = Environment.GetEnvironmentVariable("appConfigConnectionString");
 
 			WebHost.CreateDefaultBuilder(args)
 				.UseDefaultServiceProvider(options => options.ValidateScopes = false)
