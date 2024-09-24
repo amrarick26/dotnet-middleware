@@ -22,4 +22,13 @@
   <ItemGroup>
     <ProjectReference Include="..\Customer.OrderCloud.Common\Customer.OrderCloud.Common.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="ordercloud-dotnet-catalyst">
+      <HintPath>..\..\ordercloud-dotnet-catalyst\OrderCloud.Catalyst\bin\Release\netstandard2.0\OrderCloud.Catalyst.dll</HintPath>
+    </Reference>
+    <Reference Include="OrderCloud.Integrations.Payment.PayPal">
+      <HintPath>..\..\ordercloud-dotnet-catalyst\OrderCloud.Integrations.Payment.PayPal\bin\Release\netstandard2.0\OrderCloud.Integrations.Payment.PayPal.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>

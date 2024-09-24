@@ -9,12 +9,21 @@
     <PackageReference Include="LazyCache" Version="2.1.3" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.ApiExplorer" Version="2.2.0" />
     <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.ServiceBus" Version="4.3.0" />
-    <PackageReference Include="ordercloud-dotnet-catalyst" Version="2.3.3" />
+    <!--<PackageReference Include="ordercloud-dotnet-catalyst" Version="2.3.3" />-->
     <PackageReference Include="StackExchange.Redis" Version="2.6.70" />
     <PackageReference Include="OrderCloud.Integrations.Shipping.EasyPost" Version="2.3.0" />
     <PackageReference Include="OrderCloud.Integrations.Payment.stripe" Version="2.3.0" />
     <PackageReference Include="OrderCloud.Integrations.Tax.Avalara" Version="2.3.0" />
 
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="ordercloud-dotnet-catalyst">
+      <HintPath>..\..\ordercloud-dotnet-catalyst\OrderCloud.Catalyst\bin\Release\netstandard2.0\OrderCloud.Catalyst.dll</HintPath>
+    </Reference>
+    <Reference Include="OrderCloud.Integrations.Payment.PayPal">
+      <HintPath>..\..\ordercloud-dotnet-catalyst\OrderCloud.Integrations.Payment.PayPal\bin\Release\netstandard2.0\OrderCloud.Integrations.Payment.PayPal.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
